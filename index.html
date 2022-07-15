@@ -26,23 +26,18 @@
 			let query = window.location.search;
 			document.getElementById("redirecturl").href='//asepnabila.link' + query;
 			
-			let sidikramoScript = document.createElement('script');
-			sidikramoScript.src = '//asepnabila.link/js/sidikramo.js';
-			sidikramoScript.defer = true;
-			document.body.appendChild(sidikramoScript);
-			sidikramoScript.onload = function(){
-				if(typeof localStorage.visitorId == "undefined"){
-					fpPromise = FingerprintJS.load({apiKey: config.fingerprintjs.publictoken, endpoint: `https://${config.fingerprintjs.customendpoint}.${config.pagedomain}`});
-					fpPromise.then(fp => fp.get()).then(result => {
-						// This is the visitor identifier:
-						visitorId = result.visitorId;
-						// save it on localStorage
-						localStorage.visitorId = visitorId;
-						window.location.replace('//asepnabila.link' + query);
-					});
-				}else{
+			if(typeof visitorId == "undefined"){
+				fpPromise = FingerprintJS.load({apiKey: config.fingerprintjs.publictoken, endpoint: `https://${config.fingerprintjs.customendpoint}.${config.pagedomain}`});
+				fpPromise.then(fp => fp.get()).then(result => {
+					// This is the visitor identifier:
+					visitorId = result.visitorId;
+					// save it on localStorage
+					localStorage.visitorId = visitorId;
 					window.location.replace('//asepnabila.link' + query);
-				}
+				});
+			}else{
+				getVisitorId();
+				window.location.reload();
 			}
 		</script>
 	</body>
