@@ -24,20 +24,13 @@
 		<script src="//asepnabila.link/js/app.js"></script>
 		<script>
 			let query = window.location.search;
-			document.getElementById("redirecturl").href='//asepnabila.link' + query;
+			$("#redirecturl").attr("href", `//asepnabila.link/${query}`);
 			
 			if(typeof visitorId == "undefined"){
-				fpPromise = FingerprintJS.load({apiKey: config.fingerprintjs.publictoken, endpoint: `https://${config.fingerprintjs.customendpoint}.${config.pagedomain}`});
-				fpPromise.then(fp => fp.get()).then(result => {
-					// This is the visitor identifier:
-					visitorId = result.visitorId;
-					// save it on localStorage
-					localStorage.visitorId = visitorId;
-					window.location.replace('//asepnabila.link' + query);
-				});
-			}else{
 				getVisitorId();
 				window.location.reload();
+			}else{
+				window.location.replace(`//asepnabila.link/${query}`);
 			}
 		</script>
 	</body>
