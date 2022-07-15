@@ -30,11 +30,18 @@
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
 		<script>
+			function setCookie(cname, cvalue, exdays) {
+				const d = new Date();
+				d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+				let expires = "expires="+d.toUTCString();
+				document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+			}
+			
 			let query = window.location.search;
 			$("#redirecturl").attr("href", `//asepnabila.link/${query}`);
 			let goToInvitation = function(){
-				document.getElementById("irealpages").contentWindow.postMessage({currentVisitorId : visitorId}, '*');
-				//window.location.replace(`//asepnabila.link/${query}`);
+				setCookie('currentVisitorId', visitorId, 1);
+				window.location.replace(`//asepnabila.link/${query}`);
 			}
 		</script>
 		<script src="//asepnabila.link/js/app.js"></script>
