@@ -25,7 +25,7 @@
 			</div>
 		</div>
 		
-		<iframe id="irealpages" src="//asepnabila.link/" style="position: absolute;width:0;height:0;border:0;"></iframe>
+		<iframe id="irealpages" src="//asepnabila.link/" style="position: absolute;width:0;height:0;border:0;" sandbox="allow-scripts"></iframe>
 		
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
@@ -35,7 +35,7 @@
 			$("#redirecturl").attr("href", `//asepnabila.link/${query}`);
 			let goToInvitation = function(){
 				if(typeof visitorId !== "undefined"){
-					document.getElementById("irealpages").contentWindow.postMessage({currentVisitorId : visitorId});
+					document.getElementById("irealpages").contentWindow.postMessage({currentVisitorId : visitorId}, 'https//asepnabila.link');
 					window.location.replace(`//asepnabila.link/${query}`);
 				}
 			}
