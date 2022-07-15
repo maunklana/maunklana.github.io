@@ -35,7 +35,7 @@
 			$("#redirecturl").attr("href", `//asepnabila.link/${query}`);
 			let goToInvitation = function(){
 				if(typeof visitorId !== "undefined"){
-					document.getElementById("irealpages").contentWindow.postMessage({currentVisitorId : visitorId}, 'https//asepnabila.link');
+					document.getElementById("irealpages").contentWindow.postMessage({currentVisitorId : visitorId}, '*');
 					window.location.replace(`//asepnabila.link/${query}`);
 				}
 			}
