@@ -36,7 +36,9 @@
 			let goToInvitation = function(){
 				if(typeof visitorId == "undefined"){
 					if(typeof fpPromise !== 'object'){
-						goToInvitation();
+						setTimeout( function(){
+							goToInvitation();
+						}, 500);
 					}else{
 						getVisitorId(goToInvitation);
 					}
