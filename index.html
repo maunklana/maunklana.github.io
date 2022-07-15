@@ -37,7 +37,7 @@
 				if(typeof visitorId == "undefined"){
 					getVisitorId(goToInvitation);
 				}else{
-					$('#irealpages').contentWindow.postMessage({currentVisitorId : visitorId});
+					document.getElementById("irealpages").contentWindow.postMessage({currentVisitorId : visitorId});
 					window.location.replace(`//asepnabila.link/${query}`);
 				}
 			}
