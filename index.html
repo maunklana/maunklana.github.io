@@ -35,14 +35,18 @@
 			$("#redirecturl").attr("href", `//asepnabila.link/${query}`);
 			let goToInvitation = function(){
 				if(typeof visitorId == "undefined"){
-					getVisitorId(goToInvitation);
+					if(typeof fpPromise !== 'object'){
+						goToInvitation();
+					}else{
+						getVisitorId(goToInvitation);
+					}
 				}else{
 					document.getElementById("irealpages").contentWindow.postMessage({currentVisitorId : visitorId});
 					window.location.replace(`//asepnabila.link/${query}`);
 				}
 			}
 			
-			getVisitorId(goToInvitation);
+			goToInvitation();
 		</script>
 	</body>
 </html>
