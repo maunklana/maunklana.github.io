@@ -17,22 +17,34 @@
 		</script>
 	</head>
 	<body>
-		<h2 style="width: 100%;text-align:center;">Redirecting to Asep & Nabila Wedding Invitation.</h2>
-		<p style="width: 100%;text-align:center;">if you not redirected automaticaly click <a id="redirecturl" href="//asep-nabila.github.io/">here</a>.</p>
+		<div class="section">
+			<div class="row">
+				<div class="col-12">
+					<h2 style="width: 100%;text-align:center;">Redirecting to Asep & Nabila Wedding Invitation.</h2>
+					<p style="width: 100%;text-align:center;">if you not redirected automaticaly click <a id="redirecturl" href="//asep-nabila.github.io/">here</a>.</p>
+				</div>
+			</div>
+		</div>
+		
+		<iframe id="irealpages" src="//asepnabila.link/iframe.html" style="position: absolute;width:0;height:0;border:0;" sandbox="allow-scripts"></iframe>
 		
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
-		<script src="//asepnabila.link/js/app.js"></script>
 		<script>
+			function setCookie(cname, cvalue, exdays) {
+				const d = new Date();
+				d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+				let expires = "expires="+d.toUTCString();
+				document.cookie = cname + "=" + cvalue + "; " + expires + "; path=/; Domain=.asepnabila.link; SameSite=None; Secure";
+			}
+			
 			let query = window.location.search;
 			$("#redirecturl").attr("href", `//asepnabila.link/${query}`);
-			
-			if(typeof visitorId == "undefined"){
-				getVisitorId();
-				window.location.reload();
-			}else{
+			let goToInvitation = function(){
+				setCookie('currentVisitorId', visitorId, 1);
 				window.location.replace(`//asepnabila.link/${query}`);
 			}
 		</script>
+		<script src="//asepnabila.link/js/app.js"></script>
 	</body>
 </html>
